@@ -32,8 +32,35 @@ namespace MegaCastings.View
         public EditCustomerView(User user)
         {
             InitializeComponent();
+            this.User = user;
             this.Prenom.Text = user.Prenom;
             this.Nom.Text = user.Nom;
+            
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string firstName = Prenom.Text;
+            string lastName = Nom.Text;
+
+            if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName))
+            {
+                User.Nom = firstName;
+                User.Prenom = lastName;
+          
+
+                using (MegaProductionContext context = new MegaProductionContext())
+                {
+                    context.Users.Update(User);
+                    context.SaveChanges();
+                }
+
+                MessageBox.Show("Utilisateur update avec succès.");
+                Main.Content = new CustomerView();
+            }
+            else
+            {
+                MessageBox.Show("Veuillez saisir le prénom et le nom de l'utilisateur.");
+            }
         }
     }
 }

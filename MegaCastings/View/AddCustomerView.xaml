@@ -30,7 +30,7 @@
         <Label Grid.Column="1" Grid.Row="1" FontSize="18px" VerticalAlignment="Center">Prénom :</Label>
         <TextBox x:Name="prenom" Grid.Column="1" Grid.Row="1" Margin="85,0,0,0" Padding="5,10,5,10" FontSize="18px" VerticalAlignment="Center"></TextBox>
         <Label Grid.Column="1" Grid.Row="3" FontSize="18px" VerticalAlignment="Center">Nom de famille :</Label>
-        <TextBox x:Name="nomf" Grid.Column="1" Grid.Row="3" Margin="145,0,0,0" Padding="5,10,5,10" FontSize="18px" VerticalAlignment="Center"></TextBox>
+        <TextBox x:Name="nom" Grid.Column="1" Grid.Row="3" Margin="145,0,0,0" Padding="5,10,5,10" FontSize="18px" VerticalAlignment="Center"></TextBox>
         <Label Grid.Column="1" Grid.Row="5" FontSize="18px" VerticalAlignment="Center">Email :</Label>
         <TextBox x:Name="email" Grid.Column="1" Grid.Row="5" Margin="65,0,0,0" Padding="5,10,5,10" FontSize="18px" VerticalAlignment="Center"></TextBox>
         <Label Grid.Column="1" Grid.Row="7" FontSize="18px" VerticalAlignment="Center">Date de naissance :</Label>
