@@ -26,7 +26,7 @@ namespace MegaCastings.View
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string firstName = prenom.Text;
-            string lastName = nomf.Text;
+            string lastName = nom.Text;
 
             if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName))
             {
