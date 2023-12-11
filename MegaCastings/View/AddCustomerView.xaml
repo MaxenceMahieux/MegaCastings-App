@@ -27,16 +27,15 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="150px"/>
         </Grid.ColumnDefinitions>
-        <Label Grid.Column="1" Grid.Row="1" FontSize="18px" VerticalAlignment="Center">Prénom :</Label>
-        <TextBox x:Name="prenom" Grid.Column="1" Grid.Row="1" Margin="85,0,0,0" Padding="5,10,5,10" FontSize="18px" VerticalAlignment="Center"></TextBox>
-        <Label Grid.Column="1" Grid.Row="3" FontSize="18px" VerticalAlignment="Center">Nom de famille :</Label>
-        <TextBox x:Name="nom" Grid.Column="1" Grid.Row="3" Margin="145,0,0,0" Padding="5,10,5,10" FontSize="18px" VerticalAlignment="Center"></TextBox>
-        <Label Grid.Column="1" Grid.Row="5" FontSize="18px" VerticalAlignment="Center">Email :</Label>
-        <TextBox x:Name="email" Grid.Column="1" Grid.Row="5" Margin="65,0,0,0" Padding="5,10,5,10" FontSize="18px" VerticalAlignment="Center"></TextBox>
-        <Label Grid.Column="1" Grid.Row="7" FontSize="18px" VerticalAlignment="Center">Date de naissance :</Label>
-        <DatePicker x:Name="date" Grid.Column="1" Grid.Row="7" Margin="165,0,0,0" Padding="5,10,5,10" Background="White" FontSize="18px"></DatePicker>
+        <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource FormLabel}">Prénom :</Label>
+        <TextBox x:Name="prenom" Grid.Column="1" Grid.Row="1" Margin="85,0,0,0" Style="{StaticResource FormTextBox}"></TextBox>
+        <Label Grid.Column="1" Grid.Row="3" Style="{StaticResource FormLabel}">Nom de famille :</Label>
+        <TextBox x:Name="nom" Grid.Column="1" Grid.Row="3" Margin="145,0,0,0" Style="{StaticResource FormTextBox}"></TextBox>
+        <Label Grid.Column="1" Grid.Row="5" Style="{StaticResource FormLabel}">Email :</Label>
+        <TextBox x:Name="email" Grid.Column="1" Grid.Row="5" Margin="65,0,0,0" Style="{StaticResource FormTextBox}"></TextBox>
+        <Label Grid.Column="1" Grid.Row="7" Style="{StaticResource FormLabel}">Date de naissance :</Label>
+        <DatePicker x:Name="date" Grid.Column="1" Grid.Row="7" Margin="165,0,0,0" Style="{StaticResource FormDatePicker}"></DatePicker>
         <Button  Click="Button_Click" Grid.Column="1" Grid.Row="9" Content="Ajouter" Background="White" BorderBrush="#DBDBDB" BorderThickness="1" Margin="0,0,0,10"/>
         <Frame Grid.Row="0" Grid.RowSpan="15" Grid.Column="0" Grid.ColumnSpan="3" x:Name="Main" NavigationUIVisibility="Hidden"/>
-
     </Grid>
 </Page>
