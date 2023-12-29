@@ -22,9 +22,9 @@ namespace MegaCastings.View
     /// </summary>
     public partial class PartnerView : Page
     {
-        public ObservableCollection<User> allpartner { get; set; } // Utilisation de ObservableCollection au lieu de List
+        public ObservableCollection<Partner> allpartner { get; set; } // Utilisation de ObservableCollection au lieu de List
 
-        public User? SelectedPartner { get; set; }
+        public Partner? SelectedPartner { get; set; }
         public PartnerView()
         {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace MegaCastings.View
 
             using (MegaProductionContext allpartners = new())
             {
-                allpartner = new ObservableCollection<User>(allpartners.Users.ToList());
+                allpartner = new ObservableCollection<Partner>(allpartners.Partner.ToList());
             }
         }
 
@@ -67,7 +67,7 @@ namespace MegaCastings.View
             {
                 using (MegaProductionContext context = new())
                 {
-                    context.Users.Remove(SelectedPartner);
+                    context.Partners.Remove(SelectedPartner);
                     context.SaveChanges();
                     this.allpartner.Remove(SelectedPartner);
                 }
