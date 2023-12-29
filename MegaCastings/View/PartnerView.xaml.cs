@@ -44,7 +44,7 @@ namespace MegaCastings.View
         }
         private void Button_AddPartner(object sender, RoutedEventArgs e)
         {
-            Main.Content = new AddPartnerView();
+            Main.Content = new AddCustomerView();
         }
 
         private void Button_CustomerClick(object sender, RoutedEventArgs e)
