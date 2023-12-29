@@ -14,4 +14,6 @@ public partial class BigCategory
     public virtual ICollection<Partner> Partners { get; set; } = new List<Partner>();
 
     public virtual ICollection<SubCategory> SubCategories { get; set; } = new List<SubCategory>();
+
+    public virtual ICollection<User> Users { get; set; } = new List<User>();
 }

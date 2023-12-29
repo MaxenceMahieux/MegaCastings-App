@@ -43,11 +43,11 @@ public partial class MegaProductionContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.HasIndex(e => e.Bigcategoryid, "FK_Annonces_BigCategory");
+            entity.HasIndex(e => e.Bigcategoryid, "FK_Announces_BigCategory");
 
-            entity.HasIndex(e => e.Contracttypeid, "FK_Annonces_Contracts");
+            entity.HasIndex(e => e.Contracttypeid, "FK_Announces_Contracts");
 
-            entity.HasIndex(e => e.Subcategoryid, "FK_Annonces_SubCategory");
+            entity.HasIndex(e => e.Subcategoryid, "FK_Announces_SubCategory");
 
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
@@ -95,15 +95,15 @@ public partial class MegaProductionContext : DbContext
 
             entity.HasOne(d => d.Bigcategory).WithMany(p => p.Announces)
                 .HasForeignKey(d => d.Bigcategoryid)
-                .HasConstraintName("FK_Annonces_BigCategory");
+                .HasConstraintName("FK_Announces_BigCategory");
 
             entity.HasOne(d => d.Contracttype).WithMany(p => p.Announces)
                 .HasForeignKey(d => d.Contracttypeid)
-                .HasConstraintName("FK_Annonces_Contracts");
+                .HasConstraintName("FK_Announces_Contracts");
 
             entity.HasOne(d => d.Subcategory).WithMany(p => p.Announces)
                 .HasForeignKey(d => d.Subcategoryid)
-                .HasConstraintName("FK_Annonces_SubCategory");
+                .HasConstraintName("FK_Announces_SubCategory");
         });
 
         modelBuilder.Entity<AnnounceCandidate>(entity =>
@@ -191,9 +191,9 @@ public partial class MegaProductionContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.HasIndex(e => e.Packid, "FK_Partners_Packs");
+            entity.HasIndex(e => e.Bigcategoryid, "FK_Partners_BigCategory");
 
-            entity.HasIndex(e => e.Bigcategoryid, "FK__BigCategory");
+            entity.HasIndex(e => e.Packid, "FK_Partners_Packs");
 
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
@@ -229,7 +229,7 @@ public partial class MegaProductionContext : DbContext
 
             entity.HasOne(d => d.Bigcategory).WithMany(p => p.Partners)
                 .HasForeignKey(d => d.Bigcategoryid)
-                .HasConstraintName("FK__BigCategory");
+                .HasConstraintName("FK_Partners_BigCategory");
 
             entity.HasOne(d => d.Pack).WithMany(p => p.Partners)
                 .HasForeignKey(d => d.Packid)
@@ -242,23 +242,23 @@ public partial class MegaProductionContext : DbContext
 
             entity.ToTable("SubCategory");
 
-            entity.HasIndex(e => e.BigCatgoryId, "BigCategory");
+            entity.HasIndex(e => e.Bigcategoryid, "BigCategory");
 
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
-            entity.Property(e => e.BigCatgoryId)
+            entity.Property(e => e.Bigcategoryid)
                 .HasColumnType("int(11)")
-                .HasColumnName("BigCatgory_ID");
+                .HasColumnName("bigcategoryid");
             entity.Property(e => e.Title)
                 .HasMaxLength(100)
                 .HasDefaultValueSql("''''''")
                 .HasColumnName("title");
 
-            entity.HasOne(d => d.BigCatgory).WithMany(p => p.SubCategories)
-                .HasForeignKey(d => d.BigCatgoryId)
+            entity.HasOne(d => d.Bigcategory).WithMany(p => p.SubCategories)
+                .HasForeignKey(d => d.Bigcategoryid)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("BigCategory");
+                .HasConstraintName("FK_SubCategory_BigCategory");
         });
 
         modelBuilder.Entity<User>(entity =>
@@ -267,9 +267,9 @@ public partial class MegaProductionContext : DbContext
 
             entity.HasIndex(e => e.Annonceid, "FK_Users_Announces");
 
-            entity.HasIndex(e => e.Bigcategoryid, "link");
+            entity.HasIndex(e => e.Bigcategoryid, "FK_Users_BigCategory");
 
-            entity.HasIndex(e => e.Subcategoryid, "link2");
+            entity.HasIndex(e => e.Subcategoryid, "FK_Users_SubCategory");
 
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
@@ -284,7 +284,7 @@ public partial class MegaProductionContext : DbContext
                 .HasColumnName("bigcategoryid");
             entity.Property(e => e.Birthdate)
                 .HasDefaultValueSql("'NULL'")
-                .HasColumnType("datetime")
+                .HasColumnType("date")
                 .HasColumnName("birthdate");
             entity.Property(e => e.Email)
                 .HasMaxLength(100)
@@ -302,10 +302,10 @@ public partial class MegaProductionContext : DbContext
                 .HasMaxLength(50)
                 .HasDefaultValueSql("'NULL'")
                 .HasColumnName("lastname");
-            entity.Property(e => e.Password)
-                .HasMaxLength(255)
-                .HasDefaultValueSql("'NULL'")
-                .HasColumnName("password");
+            // entity.Property(e => e.Password)
+                // .HasMaxLength(255)
+                // .HasDefaultValueSql("'NULL'")
+                // .HasColumnName("password");
             entity.Property(e => e.Subcategoryid)
                 .HasDefaultValueSql("'NULL'")
                 .HasColumnType("int(11)")
@@ -314,6 +314,14 @@ public partial class MegaProductionContext : DbContext
             entity.HasOne(d => d.Annonce).WithMany(p => p.Users)
                 .HasForeignKey(d => d.Annonceid)
                 .HasConstraintName("FK_Users_Announces");
+
+            entity.HasOne(d => d.Bigcategory).WithMany(p => p.Users)
+                .HasForeignKey(d => d.Bigcategoryid)
+                .HasConstraintName("FK_Users_BigCategory");
+
+            entity.HasOne(d => d.Subcategory).WithMany(p => p.Users)
+                .HasForeignKey(d => d.Subcategoryid)
+                .HasConstraintName("FK_Users_SubCategory");
         });
 
         modelBuilder.Entity<UsersAdmin>(entity =>

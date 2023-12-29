@@ -33,13 +33,14 @@ namespace MegaCastings.View
 
             using (MegaProductionContext allpartners = new())
             {
-                allpartner = new ObservableCollection<Partner>(allpartners.Partner.ToList());
+                allpartner = new ObservableCollection<Partner>(allpartners.Partners.ToList());
             }
         }
 
         private void Button_EditPartner(object sender, RoutedEventArgs e)
         {
-            Main.Content = new EditCustomerView(SelectedPartner);
+            //Main.Content = new EditPartnerView(SelectedPartner);
+            return;
         }
         private void Button_AddPartner(object sender, RoutedEventArgs e)
         {

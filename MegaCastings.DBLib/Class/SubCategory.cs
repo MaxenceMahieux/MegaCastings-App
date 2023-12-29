@@ -9,9 +9,11 @@ public partial class SubCategory
 
     public string Title { get; set; } = null!;
 
-    public int BigCatgoryId { get; set; }
+    public int Bigcategoryid { get; set; }
 
     public virtual ICollection<Announce> Announces { get; set; } = new List<Announce>();
 
-    public virtual BigCategory BigCatgory { get; set; } = null!;
+    public virtual BigCategory Bigcategory { get; set; } = null!;
+
+    public virtual ICollection<User> Users { get; set; } = new List<User>();
 }

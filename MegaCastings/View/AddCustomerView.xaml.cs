@@ -17,8 +17,9 @@ namespace MegaCastings.View
 {
     public partial class AddCustomerView : Page
     {
+
         public ObservableCollection<User> AllUsers { get; set; }
-        public User? SelectedUser { get; set; }
+        public User SelectedUser { get; set; } // Correction ici, enlever le ?
         public AddCustomerView()
         {
             InitializeComponent();
@@ -28,15 +29,16 @@ namespace MegaCastings.View
             string firstName = prenom.Text;
             string lastName = nom.Text;
             string eMail = email.Text;
- 
+            DateTime? selectedDate = birthdate.SelectedDate;
 
-            if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName) && !string.IsNullOrEmpty(eMail))
+            if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName) && !string.IsNullOrEmpty(eMail) && selectedDate.HasValue)
             {
                 User newUser = new User
                 {
                     Lastname = firstName,
                     Firstname = lastName,
                     Email = eMail,
+                    Birthdate = selectedDate.Value
                 };
 
                 using (MegaProductionContext context = new MegaProductionContext())
@@ -50,7 +52,7 @@ namespace MegaCastings.View
             }
             else
             {
-                MessageBox.Show("Veuillez saisir le prénom et le nom de l'utilisateur.");
+                MessageBox.Show("Veuillez saisir le prénom, le nom et sélectionner une date de naissance pour l'utilisateur.");
             }
         }
     }

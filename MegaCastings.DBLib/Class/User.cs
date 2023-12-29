@@ -13,7 +13,7 @@ public partial class User
 
     public string? Email { get; set; }
 
-    public string? Password { get; set; }
+    // public string? Password { get; set; }
 
     public DateTime? Birthdate { get; set; }
 
@@ -28,4 +28,8 @@ public partial class User
     public virtual Announce? Annonce { get; set; }
 
     public virtual ICollection<AnnounceCandidate> AnnounceCandidates { get; set; } = new List<AnnounceCandidate>();
+
+    public virtual BigCategory? Bigcategory { get; set; }
+
+    public virtual SubCategory? Subcategory { get; set; }
 }
