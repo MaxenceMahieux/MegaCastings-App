@@ -33,20 +33,23 @@ namespace MegaCastings.View
         {
             InitializeComponent();
             this.User = user;
-            this.Prenom.Text = user.Prenom;
-            this.Nom.Text = user.Nom;
-            
+            this.Prenom.Text = user.Firstname;
+            this.Nom.Text = user.Lastname;
+            this.Email.Text = user.Email;
+
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string firstName = Prenom.Text;
             string lastName = Nom.Text;
+            string eMail = Email.Text;
 
-            if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName))
+            if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName) && !string.IsNullOrEmpty(eMail))
             {
-                User.Nom = firstName;
-                User.Prenom = lastName;
-          
+                User.Lastname = firstName;
+                User.Firstname = lastName;
+                User.Email = eMail;
+
 
                 using (MegaProductionContext context = new MegaProductionContext())
                 {

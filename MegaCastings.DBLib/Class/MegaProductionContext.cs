@@ -34,12 +34,12 @@ public partial class MegaProductionContext : DbContext
             entity.Property(e => e.Id)
                 .HasColumnType("int(11) unsigned")
                 .HasColumnName("id");
-            entity.Property(e => e.Nom)
+            entity.Property(e => e.Lastname)
                 .HasColumnType("text")
-                .HasColumnName("nom");
-            entity.Property(e => e.Prenom)
+                .HasColumnName("lastname");
+            entity.Property(e => e.Firstname)
                 .HasColumnType("text")
-                .HasColumnName("prenom");
+                .HasColumnName("firstname");
         });
 
         OnModelCreatingPartial(modelBuilder);

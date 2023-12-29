@@ -18,7 +18,8 @@
     </Style>
 
     <Style x:Key="DataGridStyle" TargetType="{x:Type DataGrid}">
-        <Setter Property="BorderBrush" Value="#BDBDBD" />
-        <Setter Property="Background" Value="White" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="#222528" />
+        <Setter Property="BorderThickness" Value="0" />
     </Style>
 </ResourceDictionary>

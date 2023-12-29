@@ -1,8 +1,9 @@
-﻿using MegaCastings.View;
-using MegaCastings;
+﻿using MegaCastings.DBLib.Class;
 using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -11,24 +12,26 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using MegaCastings.DBLib.Class;
+using System.Windows.Shapes;
 
 namespace MegaCastings.View
 {
-    public partial class AddCustomerView : Page
+    /// <summary>
+    /// Logique d'interaction pour AddPartnerView.xaml
+    /// </summary>
+    public partial class AddPartnerView : Page
     {
-        public ObservableCollection<User> AllUsers { get; set; }
-        public User? SelectedUser { get; set; }
-        public AddCustomerView()
+        public AddPartnerView()
         {
             InitializeComponent();
         }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string firstName = prenom.Text;
             string lastName = nom.Text;
             string eMail = email.Text;
- 
+
 
             if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName) && !string.IsNullOrEmpty(eMail))
             {
