@@ -17,13 +17,26 @@ namespace MegaCastings.View
 {
     public partial class AddCustomerView : Page
     {
-
         public ObservableCollection<User> AllUsers { get; set; }
-        public User SelectedUser { get; set; } // Correction ici, enlever le ?
+        public ObservableCollection<BigCategory> BigCategories { get; set; }
+        public User SelectedUser { get; set; }
+
         public AddCustomerView()
         {
             InitializeComponent();
+            DataContext = this; // Définition du DataContext sur cette instance de la classe
+            BigCategories = GetBigCategories();
         }
+
+        private ObservableCollection<BigCategory> GetBigCategories()
+        {
+            // Implémentez la logique pour obtenir les catégories depuis la base de données
+            using (MegaProductionContext context = new MegaProductionContext())
+            {
+                return new ObservableCollection<BigCategory>(context.BigCategories.ToList());
+            }
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string firstName = prenom.Text;

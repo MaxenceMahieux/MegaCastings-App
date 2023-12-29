@@ -46,11 +46,8 @@
         <DatePicker x:Name="birthdate" Grid.Column="1" Grid.Row="7" Margin="165,0,0,0" Style="{StaticResource FormDatePicker}" />
 
         <Label Grid.Column="1" Grid.Row="9" Style="{StaticResource FormLabel}">Catégorie :</Label>
-        <ComboBox x:Name="DropdownBigCategory" Grid.Column="1" Grid.Row="9" Margin="100,0,0,0">
-            <ComboBoxItem Content="Option 1"/>
-            <ComboBoxItem Content="Option 2"/>
-            <ComboBoxItem Content="Option 3"/>
-        </ComboBox>
+        <ComboBox x:Name="DropdownBigCategories" Grid.Column="1" Grid.Row="9" Margin="100,0,0,0" 
+          ItemsSource="{Binding BigCategories}" DisplayMemberPath="Title" />
 
         <Label Grid.Column="1" Grid.Row="11" Style="{StaticResource FormLabel}">Sous-Catégorie :</Label>
         <ComboBox x:Name="DropdownSubCategory" Grid.Column="1" Grid.Row="11" Margin="145,0,0,0">
