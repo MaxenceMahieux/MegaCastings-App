@@ -19,7 +19,7 @@ public partial class Partner
 
     public int? Packid { get; set; }
 
-    public sbyte? Isactive { get; set; }
+    public int? Isactive { get; set; }
 
     public virtual BigCategory? Bigcategory { get; set; }
 

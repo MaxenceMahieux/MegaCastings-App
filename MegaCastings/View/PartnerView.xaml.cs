@@ -35,16 +35,38 @@ namespace MegaCastings.View
             {
                 allpartner = new ObservableCollection<Partner>(allpartners.Partners.ToList());
             }
+
+            var columnsToDisplay = new Dictionary<string, string>
+            {
+                { "Id", "ID" },
+                { "Label", "Label" },
+                { "Siret", "Siret" },
+                { "Desc", "Description" },
+                { "Datetime", "Date de création" },
+                { "Bigcategoryid", "Catégorie" },
+                { "Packid", "Pack" },
+                { "Isactive", "Actif" }
+            };
+
+            foreach (var column in columnsToDisplay)
+            {
+                DataGridTextColumn dataColumn = new DataGridTextColumn();
+                dataColumn.Header = column.Value;
+                dataColumn.Binding = new Binding(column.Key);
+                partnersdatagrid.Columns.Add(dataColumn);
+            }
+
+            // Supprimez les colonnes du XAML
+            partnersdatagrid.AutoGenerateColumns = false;
         }
 
         private void Button_EditPartner(object sender, RoutedEventArgs e)
         {
-            //Main.Content = new EditPartnerView(SelectedPartner);
-            return;
+            Main.Content = new EditPartnerView(SelectedPartner);
         }
         private void Button_AddPartner(object sender, RoutedEventArgs e)
         {
-            Main.Content = new AddCustomerView();
+            Main.Content = new AddPartnerView();
         }
 
         private void Button_CustomerClick(object sender, RoutedEventArgs e)

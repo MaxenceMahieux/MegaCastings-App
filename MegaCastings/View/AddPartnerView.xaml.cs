@@ -1,6 +1,8 @@
 ﻿using MegaCastings.DBLib.Class;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,35 +23,75 @@ namespace MegaCastings.View
     /// </summary>
     public partial class AddPartnerView : Page
     {
+        public ObservableCollection<BigCategory> BigCategories { get; set; }
+        public ObservableCollection<Pack> Packs { get; set; }
+
         public AddPartnerView()
         {
             InitializeComponent();
+            DataContext = this;
+            BigCategories = GetBigCategories();
+            Packs = GetPackCategories();
         }
+
+        private ObservableCollection<BigCategory> GetBigCategories()
+        {
+            // Obtenez les catégories depuis la base de données
+            using (MegaProductionContext context = new MegaProductionContext())
+            {
+                return new ObservableCollection<BigCategory>(context.BigCategories.ToList());
+            }
+        }
+
+        private ObservableCollection<Pack> GetPackCategories()
+        {
+            using (MegaProductionContext context = new MegaProductionContext())
+            {
+                return new ObservableCollection<Pack>(context.Packs.ToList());
+            }
+        }
+
+
+
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string firstName = prenom.Text;
-            string lastName = nom.Text;
-            string eMail = email.Text;
+            string Label = label.Text;
+            string Siret = siret.Text;
+            string Desc = desc.Text;
+            DateTime? selectedDate = date.SelectedDate;
+            int CheckBoxIsActive = checkboxisactive.IsChecked == true ? 1 : 0;
 
 
-            if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName) && !string.IsNullOrEmpty(eMail))
+            if (!string.IsNullOrEmpty(Label) && !string.IsNullOrEmpty(Siret) && !string.IsNullOrEmpty(Desc) && selectedDate.HasValue)
             {
-                User newUser = new User
+                if (DropdownBigCategories.SelectedItem is BigCategory selectedBigCategory &&
+                    DropdownPack.SelectedItem is Pack selectedPack)
                 {
-                    Lastname = firstName,
-                    Firstname = lastName,
-                    Email = eMail,
-                };
+                    Partner newPartner = new Partner
+                    {
+                        Label = Label,
+                        Siret = Siret,
+                        Desc = Desc,
+                        Datetime = selectedDate,
+                        Isactive = CheckBoxIsActive,
+                        Bigcategoryid = selectedBigCategory.Id,
+                        Packid = selectedPack.Id,
+                    };
 
-                using (MegaProductionContext context = new MegaProductionContext())
-                {
-                    context.Users.Add(newUser);
-                    context.SaveChanges();
+                    using (MegaProductionContext context = new MegaProductionContext())
+                    {
+                        context.Partners.Add(newPartner);
+                        context.SaveChanges();
+                    }
+
+                    MessageBox.Show("Utilisateur ajouté avec succès.");
+                    PartnerView PartnerView = new PartnerView();
+                    NavigationService?.RemoveBackEntry(); 
+                    NavigationService?.Navigate(PartnerView);
                 }
 
-                MessageBox.Show("Utilisateur ajouté avec succès.");
-                Main.Content = new CustomerView();
             }
             else
             {

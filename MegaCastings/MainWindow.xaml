@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:MegaCastings"
         mc:Ignorable="d"
         Title="MegaCastings"
-        Height="450" 
-        Width="800"
+        Height="700" 
+        Width="1200"
         Background="#F2F5EC">
 
     <Grid ShowGridLines="False">

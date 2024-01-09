@@ -50,16 +50,13 @@
           ItemsSource="{Binding BigCategories}" DisplayMemberPath="Title" />
 
         <Label Grid.Column="1" Grid.Row="11" Style="{StaticResource FormLabel}">Sous-Catégorie :</Label>
-        <ComboBox x:Name="DropdownSubCategory" Grid.Column="1" Grid.Row="11" Margin="145,0,0,0">
-            <ComboBoxItem Content="Option 1"/>
-            <ComboBoxItem Content="Option 2"/>
-            <ComboBoxItem Content="Option 3"/>
-        </ComboBox>
+        <ComboBox x:Name="DropdownSubCategory" Grid.Column="1" Grid.Row="11" Margin="145,0,0,0" 
+          ItemsSource="{Binding SubCategories}" DisplayMemberPath="Title" />
 
         <Label Grid.Column="1" Grid.Row="13" Style="{StaticResource FormLabel}">Est actif :</Label>
-        <CheckBox x:Name="CheckBoxIsActive" Grid.Column="1" Grid.Row="13" Margin="80, 17, 0, 0" />
+        <CheckBox x:Name="checkboxisactive" Grid.Column="1" Grid.Row="13" Margin="80, 17, 0, 0" />
 
-        <Button  Click="Button_Click" Grid.Column="1" Grid.Row="15" Content="Ajouter" Background="White" BorderBrush="#DBDBDB" BorderThickness="1" Margin="0,0,0,10"/>
+        <Button  Click="Button_Click" Grid.Column="1" Grid.Row="15" Content="Ajouter" Background="White" BorderBrush="#DBDBDB" BorderThickness="1" Margin="0,0,0,10" />
         <Frame Grid.Row="0" Grid.RowSpan="15" Grid.Column="0" Grid.ColumnSpan="3" x:Name="Main" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>

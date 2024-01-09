@@ -8,7 +8,55 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EditPartnerView">
 
-    <Grid>
-        
+    <Grid Background="#F2F5EC" ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150px"/>
+            <RowDefinition Height="45px" />
+            <RowDefinition Height="10px" />
+            <RowDefinition Height="45px" />
+            <RowDefinition Height="10px" />
+            <RowDefinition Height="45px" />
+            <RowDefinition Height="10px" />
+            <RowDefinition Height="45px" />
+            <RowDefinition Height="10px" />
+            <RowDefinition Height="45px" />
+            <RowDefinition Height="10px" />
+            <RowDefinition Height="45px" />
+            <RowDefinition Height="10px" />
+            <RowDefinition Height="45px" />
+            <RowDefinition Height="10px" />
+            <RowDefinition Height="45px" />
+            <RowDefinition Height="150px"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150px"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="150px"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource FormLabel}">Label :</Label>
+        <TextBox x:Name="label" Grid.Column="1" Grid.Row="1" Margin="65,0,0,0" Style="{StaticResource FormTextBox}" />
+
+        <Label Grid.Column="1" Grid.Row="3" Style="{StaticResource FormLabel}">SIRET :</Label>
+        <TextBox x:Name="siret" Grid.Column="1" Grid.Row="3" Margin="65,0,0,0" Style="{StaticResource FormTextBox}" />
+
+        <Label Grid.Column="1" Grid.Row="5" Style="{StaticResource FormLabel}">Description :</Label>
+        <TextBox x:Name="desc" Grid.Column="1" Grid.Row="5" Margin="110,0,0,0" Style="{StaticResource FormTextBox}" />
+
+        <Label Grid.Column="1" Grid.Row="7" Style="{StaticResource FormLabel}">Date de création :</Label>
+        <DatePicker x:Name="date" Grid.Column="1" Grid.Row="7" Margin="155,0,0,0" Style="{StaticResource FormDatePicker}" />
+
+        <Label Grid.Column="1" Grid.Row="9" Style="{StaticResource FormLabel}">Catégorie :</Label>
+        <ComboBox x:Name="DropdownBigCategories" Grid.Column="1" Grid.Row="9" Margin="100,0,0,0" 
+  ItemsSource="{Binding BigCategories}" DisplayMemberPath="Title" />
+
+        <Label Grid.Column="1" Grid.Row="11" Style="{StaticResource FormLabel}">Pack :</Label>
+        <ComboBox x:Name="DropdownPack" Grid.Column="1" Grid.Row="11" Margin="100,0,0,0" 
+  ItemsSource="{Binding Packs}" DisplayMemberPath="Label" />
+
+        <Label Grid.Column="1" Grid.Row="13" Style="{StaticResource FormLabel}">Est actif :</Label>
+        <CheckBox x:Name="checkboxisactive" Grid.Column="1" Grid.Row="13" Margin="80, 17, 0, 0" />
+
+        <Button  Click="Button_Click" Grid.Column="1" Grid.Row="15" Content="Mettre à jour" Background="White" BorderBrush="#DBDBDB" BorderThickness="1" Margin="0,0,0,10"/>
+        <Frame Grid.Row="0" Grid.RowSpan="15" Grid.Column="0" Grid.ColumnSpan="3" x:Name="Main" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>

@@ -212,7 +212,7 @@ public partial class MegaProductionContext : DbContext
                 .HasColumnName("desc");
             entity.Property(e => e.Isactive)
                 .HasDefaultValueSql("'NULL'")
-                .HasColumnType("tinyint(4)")
+                .HasColumnType("int(11)")
                 .HasColumnName("isactive");
             entity.Property(e => e.Label)
                 .HasMaxLength(100)
@@ -296,16 +296,16 @@ public partial class MegaProductionContext : DbContext
                 .HasColumnName("firstname");
             entity.Property(e => e.Isactive)
                 .HasDefaultValueSql("'NULL'")
-                .HasColumnType("tinyint(4)")
+                .HasColumnType("int(11)")
                 .HasColumnName("isactive");
             entity.Property(e => e.Lastname)
                 .HasMaxLength(50)
                 .HasDefaultValueSql("'NULL'")
                 .HasColumnName("lastname");
-            // entity.Property(e => e.Password)
-                // .HasMaxLength(255)
-                // .HasDefaultValueSql("'NULL'")
-                // .HasColumnName("password");
+            entity.Property(e => e.Password)
+                .HasMaxLength(255)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnName("password");
             entity.Property(e => e.Subcategoryid)
                 .HasDefaultValueSql("'NULL'")
                 .HasColumnType("int(11)")

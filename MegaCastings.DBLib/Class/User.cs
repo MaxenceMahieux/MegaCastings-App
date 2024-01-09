@@ -13,7 +13,7 @@ public partial class User
 
     public string? Email { get; set; }
 
-    // public string? Password { get; set; }
+    public string? Password { get; set; }
 
     public DateTime? Birthdate { get; set; }
 
@@ -23,7 +23,7 @@ public partial class User
 
     public int? Annonceid { get; set; }
 
-    public sbyte? Isactive { get; set; }
+    public int? Isactive { get; set; }
 
     public virtual Announce? Annonce { get; set; }
 

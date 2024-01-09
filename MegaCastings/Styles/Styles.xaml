@@ -21,5 +21,7 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="#222528" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="HorizontalGridLinesBrush" Value="#E0E0E0" />
+        <Setter Property="VerticalGridLinesBrush" Value="#F7F7F7" />
     </Style>
 </ResourceDictionary>
